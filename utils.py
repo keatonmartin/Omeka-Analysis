@@ -34,7 +34,7 @@ def tokens(text: str, stops: list = None):
     stopwords_list.extend(stops)
 
     # remove punctuation, make lower case, don't include stopwords
-    return [word.lower() for word in words if (word.isalpha() and word not in stopwords_list)]
+    return [word.lower() for word in words if (word.isalpha() and word.lower() not in stopwords_list)]
 
     
 

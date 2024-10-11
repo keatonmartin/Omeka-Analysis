@@ -21,10 +21,10 @@ def main():
     
     combined = " ".join(descriptions)
     tokens = utils.tokens(combined)
-
+    print(f"{len(tokens)} words")
     freq = FreqDist(tokens)
     for word, f in freq.most_common():
-        print(word, f)
+        print(f"{word}: {f}")
 
 
 
