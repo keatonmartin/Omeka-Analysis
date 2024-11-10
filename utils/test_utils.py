@@ -1,4 +1,4 @@
-from utils import clean_html_entities, clean_html_tags, tokens
+from utils import clean_html_tags, tokens
 
 # clean_html_tags
 
@@ -17,4 +17,20 @@ def test_clean_html_tags_keep_arrow():
 def test_clean_html_tags_empty_string():
     assert clean_html_tags("") == ""
 
-# tokens
+# tokens integration test
+
+sample_text = "<html><h1>The quick brown fox jumped over; the! lazy? dog.</h1></html>"
+
+def test_tokens_removes_custom_stopword():
+    res = tokens(sample_text, stops=['fox'])
+    assert "fox" not in res
+    
+def test_tokens_removes_english_stopwords():
+    res = tokens(sample_text)
+    stopwords = {"the", "over"}
+    assert not any([True if t in stopwords else False for t in res])
+
+def test_tokens_contains_expected_tokens():
+    res = tokens(sample_text)
+    expected = ["quick", "brown", "fox", "lazy", "dog", "jumped"]
+    assert all([True if e in res else False for e in expected])
