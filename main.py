@@ -6,22 +6,16 @@ import utils
 from api import *
 from nltk.probability import FreqDist
 
+# main.py outputs an html file to be used on simple pages
+
 URL = "https://drvk.createuky.net/news-articles/api/"
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
 def main():
-    # create_tag(URL, {
-    #     "id" : 276,
-    #     "url" : URL + "/tags/276",
-    #     "name" : "test",
-    #     "extended_resources" : []
-    # })
-    delete_tag(URL, 276)
+    pass
     
-
-
-def gen_report():
+def gen_freq():
     r = requests.get(URL + "items")
     items = json.loads(r.text)
 

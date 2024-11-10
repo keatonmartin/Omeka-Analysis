@@ -1,7 +1,8 @@
 import json
 import requests
 
-# This file contains a few useful functions for interacting with the Omeka API.
+# This file is currently defunct in that there's no (from my understanding)
+# possible way to upload tags through the Omeka API
 
 # given an item id, return the JSON response from the Omeka API
 def get_item(id: int, url: str):
@@ -17,10 +18,12 @@ def create_tag(url: str, payload: dict):
     r = requests.post(url + "tags", json=payload)
     print(r.text)
 
+# TODO: auth
 def create_item(url: str, payload: dict):
     r = requests.post(url + "items", json=payload)
     print(r.text)
 
+# TODO: auth
 def delete_tag(url: str, id: int):
     r = requests.delete(url + f"tags/{id}")
     print(r.text)
