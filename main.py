@@ -13,6 +13,7 @@ load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
 def main():
+    add_tag_to_item(271, URL, API_KEY, "Lexington")
     pass
     
 def gen_freq():

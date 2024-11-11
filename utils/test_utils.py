@@ -17,7 +17,7 @@ def test_clean_html_tags_keep_arrow():
 def test_clean_html_tags_empty_string():
     assert clean_html_tags("") == ""
 
-# tokens integration test
+# tokens
 
 sample_text = "<html><h1>The quick brown fox jumped over; the! lazy? dog.</h1></html>"
 
