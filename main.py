@@ -32,11 +32,19 @@ def gen_csv():
 
 # expects an ordered list of word, frequency pairs like that which results from freqdist.most_common()
 def gen_html_report(frequencies: list, n: int):
+    wordToFreq = {}
+    for word, freq in frequencies:
+        wordToFreq[word] = freq;
     # generate html report containing top n most frequent words
     res =  f"<h3>This page displays the top {n} most frequent words appearing in every transcription contained in the Documenting Racial Violence in Kentucky project.</h3>"
     for i in range(n):
         word, freq = frequencies[i]
         res += f"<p><a href=\"https://drvk.createuky.net/news-articles/search?query={word}&query_type=exact_match\">{word}</a>: {freq}</p>"
+    highlight_words = ['beast', 'fiend', 'brute', 'rapist', 'innocent', 'murderer', 'girl']
+    res += "<h3> The following is a list of words deemed important by Dr. Nikki Brown, manager of the DRVK project.</h3>"
+    for word in highlight_words:
+        if word not in wordToFreq: continue
+        res += f"<p><a href=\"https://drvk.createuky.net/news-articles/search?query={word}&query_type=exact_match\">{word}</a>: {wordToFreq[word]}</p>"
     return res
     
 def gen_freq():
@@ -50,7 +58,8 @@ def gen_freq():
                 descriptions.append(text["text"])
     
     combined = " ".join(descriptions)
-    tokens = utils.tokens(combined)
+    stopwords = ["one", "two"]
+    tokens = utils.tokens(combined, stopwords)
     freq = FreqDist(tokens)
     return freq
 
