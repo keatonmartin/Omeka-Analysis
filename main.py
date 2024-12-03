@@ -40,7 +40,7 @@ def gen_html_report(frequencies: list, n: int):
     for i in range(n):
         word, freq = frequencies[i]
         res += f"<p><a href=\"https://drvk.createuky.net/news-articles/search?query={word}&query_type=exact_match\">{word}</a>: {freq}</p>"
-    highlight_words = ['beast', 'fiend', 'brute', 'rapist', 'innocent', 'murderer', 'girl']
+    highlight_words = ['beast', 'fiend', 'brute', 'rapist', 'innocent', 'murderer', 'girl', 'judge', 'governor', 'trial', 'indecent', 'white', 'drunk', 'confession', 'tree', 'swing', 'bullet', 'woman', 'women', 'assault', 'wound', 'fight', 'farm', 'jailer', 'jail']
     res += "<h3> The following is a list of words deemed important by Dr. Nikki Brown, manager of the DRVK project.</h3>"
     for word in highlight_words:
         if word not in wordToFreq: continue
